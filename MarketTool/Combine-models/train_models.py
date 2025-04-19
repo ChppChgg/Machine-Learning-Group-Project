@@ -67,7 +67,7 @@ def train_models_from_live_data():
     )
 
     # === XGBoost ===
-    xgb = XGBClassifier(use_label_encoder=False, eval_metric="mlogloss", random_state=42)
+    xgb = XGBClassifier(eval_metric="mlogloss", random_state=42)  # Removed use_label_encoder
     xgb.fit(X_train, y_train)
     xgb_preds = xgb.predict(X_test)
     print("\nXGBoost:")
@@ -82,7 +82,7 @@ def train_models_from_live_data():
         'colsample_bytree': [0.8, 1],
     }
     xgb_grid = GridSearchCV(
-        XGBClassifier(use_label_encoder=False, eval_metric="mlogloss", random_state=42),
+        XGBClassifier(eval_metric="mlogloss", random_state=42),  # Removed use_label_encoder
         param_grid=xgb_params,
         cv=3,
         n_jobs=-1,
@@ -93,7 +93,6 @@ def train_models_from_live_data():
     xgb_preds = xgb.predict(X_test)
     print("\nXGBoost Best Params:", xgb_grid.best_params_)
     print(classification_report(y_test, xgb_preds, target_names=encoder.classes_))
-
 
     # === Logistic Regression ===
     logreg = LogisticRegression(max_iter=1000, random_state=42)
