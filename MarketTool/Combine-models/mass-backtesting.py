@@ -8,6 +8,7 @@ from data_prep import download_stock_data, get_sp500_tickers
 from indicators import generate_features
 from trade_tracking import TradeManager
 from datetime import datetime
+from filters import detect_market_regime
 
 # --- Load models ---
 model_path = "MarketTool/Combine-models/models/"
@@ -86,6 +87,37 @@ def balance_trading_signals(features, window=5):
     
     return pd.Series(balanced_signals, index=df.index)
 
+# Add to your signal generation function or where you process model predictions
+
+def filter_trading_signals(predictions, market_data):
+    """Filter signals based on market conditions"""
+    
+    filtered_signals = []
+    
+    for i, pred in enumerate(predictions):
+        # Skip if we don't have enough data yet
+        if i < 50:
+            filtered_signals.append(0)
+            continue
+        
+        # Get market conditions for this day
+        regime = market_data['market_regime'].iloc[i]
+        volatility = market_data['volatility'].iloc[i]
+        
+        # Only take trades aligned with the market regime
+        if pred == "BUY" and regime > 0:
+            filtered_signals.append(1)  # Long signal
+        elif pred == "SELL" and regime < 0:
+            filtered_signals.append(-1)  # Short signal
+        else:
+            filtered_signals.append(0)  # No trade
+            
+        # Add additional volatility filter (optional)
+        if volatility > 30:  # Skip during extreme volatility
+            filtered_signals[-1] = 0
+            
+    return filtered_signals
+
 # --- Run enhanced backtesting with trade tracking ---
 def run_enhanced_backtest(initial_portfolio, selected_tickers, start_date, end_date, 
                           stop_loss_pct=0.05, profit_target_pct=0.10, 
@@ -158,17 +190,38 @@ def run_enhanced_backtest(initial_portfolio, selected_tickers, start_date, end_d
             # Set up price dictionary for all dates
             price_dict = {date: {ticker: row["Close"]} for date, row in df.loc[features.index].iterrows()}
             
+            # Add market regime data
+            market_data = detect_market_regime(df)
+            
             # Process signals day by day
             previous_signal = 0
+            last_exit_date = None
             for date, row in features.iterrows():
                 current_signal = row["Signal"]
                 current_price = row["Close"]
+                
+                # Filter signals - only take strong trends
+                current_regime = market_data.loc[date]
+                trend = current_regime['trend'] 
+                strength = current_regime['strength']
+                
+                if current_signal == 1:  # BUY signal
+                    if trend < 0 and strength > 0.3:  # Strong downtrend
+                        current_signal = 0  # Don't take the trade
+                elif current_signal == -1:  # SELL signal
+                    if trend > 0 and strength > 0.3:  # Strong uptrend
+                        current_signal = 0  # Don't take the trade
+                
+                # Add cooldown between trades (optional)
+                if last_exit_date is not None and (date - last_exit_date).days < 3:
+                    current_signal = 0  # Skip trading during cooldown
                 
                 # Check if we should open a new trade
                 if current_signal != 0 and current_signal != previous_signal:
                     # If signal changed and we have an open trade, close it
                     if ticker in trade_manager.open_trades:
                         trade_manager.force_close_trade(ticker, date, current_price)
+                        last_exit_date = date
                     
                     # Open a new trade if signal is BUY or SELL
                     if current_signal in [1, -1]:
@@ -325,7 +378,7 @@ def get_user_inputs():
             max_duration_days, slippage_pct)
 
 # --- Visualize detailed results ---
-def visualize_enhanced_results(trade_manager, performance_metrics, ticker_performance):
+def visualize_enhanced_results(trade_manager, performance_metrics, ticker_performance, selected_tickers, start_date, end_date):
     """
     Visualize enhanced backtest results
     """
@@ -386,53 +439,149 @@ def visualize_enhanced_results(trade_manager, performance_metrics, ticker_perfor
         trade_analysis_path = get_numbered_filepath("MarketTool/Combine-models/test-results/PNG/trade_analysis", "png")
         trade_manager.plot_trade_analysis(save_path=trade_analysis_path)
     
-    # 3. Win rate by ticker
-    if ticker_performance:
-        plt.figure(figsize=(12, 6))
-        tickers = list(ticker_performance.keys())
-        win_rates = [ticker_performance[t]['win_rate'] for t in tickers]
-        avg_returns = [ticker_performance[t]['avg_return'] for t in tickers]
         
-        plt.bar(tickers, win_rates, alpha=0.7, label='Win Rate %')
-        plt.axhline(y=50, color='r', linestyle='--', alpha=0.3)
-        
-        plt.title('Win Rate by Ticker')
-        plt.xlabel('Ticker')
-        plt.ylabel('Win Rate %')
-        plt.xticks(rotation=45)
-        plt.grid(alpha=0.3)
-        plt.tight_layout()
-        
-        # Save with numbered filename
-        win_rate_path = get_numbered_filepath("MarketTool/Combine-models/test-results/PNG/win_rate_by_ticker", "png")
-        plt.savefig(win_rate_path)
-        
-        # Scatter plot of win rate vs. average return
-        plt.figure(figsize=(10, 6))
-        plt.scatter(win_rates, avg_returns, s=80, alpha=0.7)
-        
-        # Add ticker labels to points
-        for i, ticker in enumerate(tickers):
-            plt.annotate(ticker, (win_rates[i], avg_returns[i]), 
-                        xytext=(5, 5), textcoords='offset points')
-        
-        plt.axhline(y=0, color='r', linestyle='--', alpha=0.3)
-        plt.axvline(x=50, color='r', linestyle='--', alpha=0.3)
-        
-        plt.title('Win Rate vs. Average Return by Ticker')
-        plt.xlabel('Win Rate %')
-        plt.ylabel('Average Return %')
-        plt.grid(alpha=0.3)
-        plt.tight_layout()
-        
-        # Save with numbered filename
-        winrate_vs_return_path = get_numbered_filepath("MarketTool/Combine-models/test-results/PNG/winrate_vs_return", "png")
-        plt.savefig(winrate_vs_return_path)
-        
+    # Add strategy vs benchmark comparison
+    benchmark_metrics = compare_strategy_to_benchmark(trade_manager, selected_tickers, start_date, end_date)
+    
+    # Update performance metrics with outperformance data
+    performance_metrics['benchmark_return_pct'] = benchmark_metrics['benchmark_return'] * 100
+    performance_metrics['outperformance_pct'] = benchmark_metrics['outperformance'] * 100
+    
     # Print output locations
     print("\nResults saved to:")
     print(f"- Trade history: {trade_history_path}")
     print(f"- Portfolio performance chart: {portfolio_perf_path}")
+
+def compare_strategy_to_benchmark(trade_manager, selected_tickers, start_date, end_date):
+    """
+    Compare strategy performance to buy-and-hold benchmark and calculate outperformance
+    """
+    # Get portfolio performance
+    portfolio_df = trade_manager.get_portfolio_value_df()
+    
+    # Check what columns are available in the portfolio DataFrame
+    # The column name might be 'Portfolio' or something else, not 'Total'
+    if 'Portfolio' in portfolio_df.columns:
+        value_column = 'Portfolio'
+    else:
+        # If no specific column found, use the first numerical column
+        numeric_cols = portfolio_df.select_dtypes(include=['number']).columns
+        if len(numeric_cols) > 0:
+            value_column = numeric_cols[0]
+        else:
+            # As a fallback, create a new column with the daily portfolio values
+            portfolio_df['Strategy'] = trade_manager.portfolio_values_list
+            value_column = 'Strategy'
+    
+    # Calculate strategy return
+    portfolio_return = (portfolio_df[value_column].iloc[-1] / portfolio_df[value_column].iloc[0]) - 1
+    
+    # Calculate buy-and-hold returns for each ticker
+    benchmark_returns = {}
+    initial_capital = trade_manager.initial_capital
+    equal_allocation = initial_capital / len(selected_tickers)
+    
+    # Create a DataFrame to store benchmark values over time
+    benchmark_df = pd.DataFrame(index=portfolio_df.index)
+    benchmark_df['Strategy'] = portfolio_df[value_column]  # Use the identified value column
+    
+    for ticker in selected_tickers:
+        try:
+            # Download data for the full period
+            df = download_stock_data(ticker, start_date, end_date)
+            if df.empty:
+                continue
+                
+            # Calculate buy-and-hold return
+            start_price = df['Close'].iloc[0]
+            end_price = df['Close'].iloc[-1]
+            bh_return = (end_price / start_price) - 1
+            benchmark_returns[ticker] = bh_return
+            
+            # Calculate daily buy-and-hold values
+            shares = equal_allocation / start_price
+            ticker_values = df['Close'] * shares
+            
+            # Add to benchmark DataFrame, aligning dates
+            ticker_values = ticker_values.reindex(portfolio_df.index, method='ffill')
+            benchmark_df[f'BH_{ticker}'] = ticker_values
+            
+        except Exception as e:
+            print(f"Error calculating buy-and-hold for {ticker}: {e}")
+    
+    # Calculate overall benchmark value (equal-weighted portfolio)
+    benchmark_cols = [c for c in benchmark_df.columns if c.startswith('BH_')]
+    if benchmark_cols:
+        benchmark_df['Benchmark'] = benchmark_df[benchmark_cols].sum(axis=1)
+        
+        # Calculate outperformance
+        benchmark_return = (benchmark_df['Benchmark'].iloc[-1] / benchmark_df['Benchmark'].iloc[0]) - 1
+        outperformance = portfolio_return - benchmark_return
+    else:
+        # Handle the case where no valid benchmark data exists
+        benchmark_return = 0
+        outperformance = 0
+        benchmark_df['Benchmark'] = benchmark_df['Strategy']
+    
+    # Create comparison chart
+    plt.figure(figsize=(12, 6))
+    
+    # Normalize to 100
+    strategy_norm = benchmark_df['Strategy'] / benchmark_df['Strategy'].iloc[0] * 100
+    benchmark_norm = benchmark_df['Benchmark'] / benchmark_df['Benchmark'].iloc[0] * 100
+    
+    plt.plot(strategy_norm, label='Trading Strategy', linewidth=2)
+    plt.plot(benchmark_norm, label='Buy & Hold', linewidth=2, alpha=0.7)
+    
+    # Add strategy outperformance annotation
+    outperf_str = f"Outperformance: {outperformance*100:.2f}%"
+    plt.annotate(outperf_str, xy=(0.05, 0.95), xycoords='axes fraction', 
+                fontsize=12, bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="gray", alpha=0.8))
+    
+    plt.title('Strategy Performance vs Buy & Hold (Normalized to 100)')
+    plt.xlabel('Date')
+    plt.ylabel('Value (Starting = 100)')
+    plt.grid(alpha=0.3)
+    plt.legend()
+    plt.tight_layout()
+    
+    # Save chart
+    comparison_path = get_numbered_filepath("MarketTool/Combine-models/test-results/PNG/strategy_vs_benchmark", "png")
+    plt.savefig(comparison_path)
+    
+    # Save comparison data to CSV
+    comparison_data_path = get_numbered_filepath("MarketTool/Combine-models/test-results/CSV/strategy_vs_benchmark", "csv")
+    comparison_df = pd.DataFrame({
+        'Date': benchmark_df.index,
+        'Strategy_Value': benchmark_df['Strategy'],
+        'Benchmark_Value': benchmark_df['Benchmark'],
+        'Strategy_Normalized': strategy_norm,
+        'Benchmark_Normalized': benchmark_norm
+    })
+    comparison_df.to_csv(comparison_data_path, index=False)
+    
+    # Save outperformance metrics
+    metrics_path = get_numbered_filepath("MarketTool/Combine-models/test-results/CSV/outperformance_metrics", "csv")
+    metrics_df = pd.DataFrame({
+        'Metric': ['Strategy_Return', 'Benchmark_Return', 'Outperformance'],
+        'Value_Pct': [portfolio_return*100, benchmark_return*100, outperformance*100]
+    })
+    metrics_df.to_csv(metrics_path, index=False)
+    
+    print(f"\n=== Strategy vs Benchmark ===")
+    print(f"Strategy Return: {portfolio_return*100:.2f}%")
+    print(f"Buy & Hold Return: {benchmark_return*100:.2f}%")
+    print(f"Outperformance: {outperformance*100:.2f}%")
+    
+    print(f"\nComparison charts saved to: {comparison_path}")
+    
+    return {
+        'strategy_return': portfolio_return,
+        'benchmark_return': benchmark_return,
+        'outperformance': outperformance,
+        'comparison_path': comparison_path,
+        'metrics_path': metrics_path
+    }
 
 # --- Main execution ---
 def main():
@@ -460,7 +609,8 @@ def main():
     
     # Visualize results
     if hasattr(trade_manager, 'trade_history') and trade_manager.trade_history:
-        visualize_enhanced_results(trade_manager, performance_metrics, ticker_performance)
+        visualize_enhanced_results(trade_manager, performance_metrics, ticker_performance, 
+                                  selected_tickers, start_date, end_date)
     else:
         print("No trades were made during the backtest period.")
     

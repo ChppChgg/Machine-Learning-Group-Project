@@ -128,40 +128,36 @@ class Trade:
             return initial_value * (1 + pct_change)
     
     def _check_exit_conditions(self):
-        """
-        Check all exit conditions
-        
-        Returns:
-        --------
-        tuple
-            (exit_triggered: bool, exit_reason: str or None)
-        """
-        # Calculate return percentage
+        """Check if any exit conditions are met"""
+        # Stop Loss and Profit Target checks remain unchanged
         if self.position_type == 'LONG':
-            current_return_pct = (self.current_price / self.entry_price) - 1
-            max_return_pct = (self.highest_price / self.entry_price) - 1
+            current_return = self.current_price / self.entry_price - 1
+            if self.stop_loss_pct is not None and current_return <= -self.stop_loss_pct:
+                return True, "STOP_LOSS"
+            if self.profit_target_pct is not None and current_return >= self.profit_target_pct:
+                return True, "PROFIT_TARGET"
         else:  # SHORT
-            current_return_pct = 1 - (self.current_price / self.entry_price)
-            max_return_pct = 1 - (self.lowest_price / self.entry_price)
+            current_return = 1 - self.current_price / self.entry_price
+            if self.stop_loss_pct is not None and current_return <= -self.stop_loss_pct:
+                return True, "STOP_LOSS"
+            if self.profit_target_pct is not None and current_return >= self.profit_target_pct:
+                return True, "PROFIT_TARGET"
         
-        # Check fixed stop loss
-        if current_return_pct <= -self.stop_loss_pct:
-            return True, "STOP_LOSS"
-        
-        # Check take profit
-        if current_return_pct >= self.profit_target_pct:
-            return True, "PROFIT_TARGET"
-        
-        # Check trailing stop if enabled
+        # Enhanced trailing stop logic
         if self.trailing_stop_pct is not None:
             if self.position_type == 'LONG':
-                trailing_stop_price = self.highest_price * (1 - self.trailing_stop_pct)
-                if self.current_price <= trailing_stop_price and self.highest_price > self.entry_price:
-                    return True, "TRAILING_STOP"
+                # Only activate trailing stop after price has moved in our favor by at least 1/3 of profit target
+                activation_threshold = self.entry_price * (1 + self.profit_target_pct/3)
+                if self.highest_price >= activation_threshold:
+                    trailing_stop_price = self.highest_price * (1 - self.trailing_stop_pct)
+                    if self.current_price <= trailing_stop_price:
+                        return True, "TRAILING_STOP"
             else:  # SHORT
-                trailing_stop_price = self.lowest_price * (1 + self.trailing_stop_pct)
-                if self.current_price >= trailing_stop_price and self.lowest_price < self.entry_price:
-                    return True, "TRAILING_STOP"
+                activation_threshold = self.entry_price * (1 - self.profit_target_pct/3)
+                if self.lowest_price <= activation_threshold:
+                    trailing_stop_price = self.lowest_price * (1 + self.trailing_stop_pct)
+                    if self.current_price >= trailing_stop_price:
+                        return True, "TRAILING_STOP"
         
         # Check max duration
         if self.max_duration_days is not None:
@@ -229,6 +225,36 @@ class Trade:
         )
         df.index.name = 'Date'
         return df
+
+    def update_trailing_stop(self, current_price):
+        """Enhanced trailing stop that activates only after profit threshold"""
+        
+        if self.trailing_stop_pct == 0:
+            return False
+        
+        # For long positions
+        if self.position_type == 'LONG':
+            # Track highest price seen
+            if current_price > self.highest_price:
+                self.highest_price = current_price
+            
+            # Only activate trailing stop after we've moved 1/3 toward profit target
+            activation_threshold = self.entry_price * (1 + self.profit_target_pct/3)
+            
+            if self.highest_price > activation_threshold:
+                # Calculate trailing stop level
+                stop_level = self.highest_price * (1 - self.trailing_stop_pct/100)
+                
+                # Exit if price falls to stop level
+                if current_price <= stop_level:
+                    return True
+        
+        # For short positions (similar logic)
+        elif self.position_type == 'SHORT':
+            # Similar implementation for shorts
+            pass
+            
+        return False
         
 class TradeManager:
     """
