@@ -53,6 +53,17 @@ def label_data(df, threshold=0.01):
 if __name__ == "__main__":
     df = download_stock_data("MSFT")
     merged = merge_with_sentiment(df)
-    features = add_technical_indicators(merged)
-    labelled = label_data(features)
-    print(labelled[["Date", "Close", "sentiment_7d_avg", "RSI", "MACD", "SMA", "Label"]].tail())
+    with_indicators = add_technical_indicators(merged)
+    labelled = label_data(with_indicators)
+    print(labelled[["Date", "Close", "sentiment_7d_avg", "RSI", "MACD", "MACD_Signal", "SMA", "Label"]].tail())
+    final_df = labelled.dropna()
+    feature_cols = [
+        "Open", "High", "Low", "Close", "Volume",
+        "sentiment_7d_avg", "RSI", "MACD", "MACD_Signal", "SMA", "EMA"
+    ]
+    target_col = "Label"
+    output_df = final_df[["Date", "Ticker"] + feature_cols + [target_col]]
+    output_df.to_csv("new/csv_files/training_data.csv", index=False)
+
+    print("Saved training_data.csv with shape:", output_df.shape)
+    print(output_df.tail())
