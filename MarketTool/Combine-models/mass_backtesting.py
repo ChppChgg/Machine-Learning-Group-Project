@@ -11,7 +11,7 @@ from datetime import datetime
 from filters import detect_market_regime
 
 # --- Load models ---
-model_path = "MarketTool/Combine-models/models/"
+model_path = "models"
 model = joblib.load(os.path.join(model_path, "stacked_classifier.pkl"))
 scaler = joblib.load(os.path.join(model_path, "scaler.pkl"))
 encoder = joblib.load(os.path.join(model_path, "label_encoder.pkl"))
