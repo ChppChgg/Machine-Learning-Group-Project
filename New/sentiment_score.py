@@ -5,6 +5,7 @@ import datetime
 import pandas as pd
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+import os
 
 nltk.download('vader_lexicon')
 
@@ -23,7 +24,7 @@ def get_combined_sentiment(ticker, scale_factor=3):
             soup = BeautifulSoup(response.text, 'html.parser')
             news_table = soup.find('table', class_='fullview-news-outer')
             if news_table:
-                rows = news_table.findAll('tr')
+                rows = news_table.find_all('tr')
                 headlines = [row.a.get_text() for row in rows if row.a]
                 return headlines
             else:
@@ -90,8 +91,31 @@ def get_combined_sentiment(ticker, scale_factor=3):
     return scaled_sentiment
 
 
+def get_cached_sentiment(ticker, cache_path="new/sentiment_csv/sentiment_cache.csv"):
+    today = datetime.date.today().isoformat()
+
+    # Load or create cache
+    if os.path.exists(cache_path):
+        cache = pd.read_csv(cache_path)
+    else:
+        cache = pd.DataFrame(columns=["ticker", "date", "sentiment"])
+
+    # Check for existing entry
+    existing = cache[(cache["ticker"] == ticker) & (cache["date"] == today)]
+    if not existing.empty:
+        return float(existing["sentiment"].iloc[0])
+
+    # If not cached, compute and store
+    score = get_combined_sentiment(ticker)
+    new_entry = pd.DataFrame([[ticker, today, score]], columns=["ticker", "date", "sentiment"])
+    new_entry.dropna(axis=1, how='all', inplace=True)
+    cache = pd.concat([cache, new_entry], ignore_index=True)
+    cache.to_csv(cache_path, index=False)
+    return score
+
+
 
 if __name__ == "__main__":
     ticker = "PLTR"
-    sentiment_score = get_combined_sentiment(ticker)
+    sentiment_score = get_cached_sentiment(ticker)
     print(f"Scaled combined sentiment score for {ticker}: {sentiment_score}")
