@@ -1,6 +1,8 @@
 import yfinance as yf
 import pandas as pd
 
+from indicators import add_technical_indicators
+
 # Downloads historical stock data for a given ticker
 def download_stock_data(ticker, start="2020-01-01", end=None):
     df = yf.download(ticker, start=start, end=end)
@@ -51,5 +53,6 @@ def label_data(df, threshold=0.01):
 if __name__ == "__main__":
     df = download_stock_data("MSFT")
     merged = merge_with_sentiment(df)
-    labelled = label_data(merged)
-    print(labelled[["Date", "Close", "sentiment_7d_avg", "Label"]].tail())
+    features = add_technical_indicators(merged)
+    labelled = label_data(features)
+    print(labelled[["Date", "Close", "sentiment_7d_avg", "RSI", "MACD", "SMA", "Label"]].tail())
