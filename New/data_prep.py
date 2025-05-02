@@ -18,7 +18,7 @@ def download_stock_data(ticker, start="2020-01-01", end=None):
     return df
 
 # Merges the price data with cached sentiment scores
-def merge_with_sentiment(price_df, sentiment_path="new/sentiment_csv/sentiment_cache.csv"):
+def merge_with_sentiment(price_df, sentiment_path="new/csv_files/sentiment_cache.csv"):
     sentiment_df = pd.read_csv(sentiment_path)
 
     # Standardise column names and formats for merging

@@ -91,7 +91,7 @@ def get_combined_sentiment(ticker, scale_factor=3):
     return scaled_sentiment
 
 
-def get_cached_sentiment(ticker, cache_path="new/sentiment_csv/sentiment_cache.csv"):
+def get_cached_sentiment(ticker, cache_path="new/csv_files/sentiment_cache.csv"):
     today = datetime.date.today().isoformat()
     ticker = ticker.upper()  # Standardise ticker case
 
