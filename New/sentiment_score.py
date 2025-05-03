@@ -91,41 +91,40 @@ def get_combined_sentiment(ticker, scale_factor=3):
     return scaled_sentiment
 
 
-def get_cached_sentiment(ticker, cache_path="new/csv_files/sentiment_cache.csv"):
-    today = datetime.date.today().isoformat()
-    ticker = ticker.upper()  # Standardise ticker case
+def get_cached_sentiment(ticker, date=None, cache_path="new/csv_files/sentiment_cache.csv"):
+    if date is None:
+        date = datetime.date.today()
+    elif isinstance(date, str):
+        date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
+
+    ticker = ticker.upper()
 
     # Load or create cache
     if os.path.exists(cache_path):
         cache = pd.read_csv(cache_path)
         cache.rename(columns={"date": "Date", "ticker": "Ticker"}, inplace=True)
+        cache["Date"] = pd.to_datetime(cache["Date"])
+        cache["Ticker"] = cache["Ticker"].str.upper()
     else:
         cache = pd.DataFrame(columns=["Ticker", "Date", "sentiment"])
 
-    # Convert column formats
-    cache["Date"] = pd.to_datetime(cache["Date"], errors='coerce')
-    cache["Ticker"] = cache["Ticker"].astype(str).str.upper()
+    # Skip if already cached
+    if ((cache["Ticker"] == ticker) & (cache["Date"] == pd.to_datetime(date))).any():
+        return float(cache[(cache["Ticker"] == ticker) & (cache["Date"] == pd.to_datetime(date))]["sentiment"].iloc[0])
 
-    # Check if entry already exists
-    existing = cache[(cache["Ticker"] == ticker) & (cache["Date"] == pd.to_datetime(today))]
-    if not existing.empty:
-        return float(existing["sentiment"].iloc[0])
-
-    # Fetch new sentiment score
+    # Compute sentiment score for the given date (approximate — gets today's headlines)
     score = get_combined_sentiment(ticker)
-    new_entry = pd.DataFrame([[ticker, today, score]], columns=["Ticker", "Date", "sentiment"])
+    new_entry = pd.DataFrame([[ticker, date, score]], columns=["Ticker", "Date", "sentiment"])
     new_entry["Date"] = pd.to_datetime(new_entry["Date"])
 
-    # Append and compute rolling 7-day average
+    # Append and recompute rolling average
     cache = pd.concat([cache, new_entry], ignore_index=True)
     cache = cache.sort_values(["Ticker", "Date"])
     cache["sentiment_7d_avg"] = cache.groupby("Ticker")["sentiment"].transform(
         lambda x: x.rolling(7, min_periods=1).mean()
     )
 
-    # Save updated cache
-    cache.to_csv(cache_path, index=False)
-
+    cache.to_csv(cache_path, index=False)    
     return score
 
 
