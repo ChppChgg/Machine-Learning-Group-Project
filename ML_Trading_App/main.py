@@ -52,7 +52,7 @@ def generate_dummy_data(ticker, start_date, end_date):
 # Wrapper function to run backtest using mass_backtesting's implementation
 def run_backtest(initial_capital, selected_tickers, start_date, end_date,
                 stop_loss_pct, profit_target_pct, trailing_stop_pct, 
-                max_duration_days, slippage_pct, use_simulated_data=False):
+                max_duration_days, slippage_pct):
     """
     Wrapper function that uses the actual mass_backtesting implementation
     """
@@ -65,7 +65,7 @@ def run_backtest(initial_capital, selected_tickers, start_date, end_date,
         # The mass_backtesting module might be looking in a specific location
         model_paths = [
             "models",
-            "MarketTool/Combine-models/models",
+            "models",
             "../models"
         ]
         
@@ -75,17 +75,7 @@ def run_backtest(initial_capital, selected_tickers, start_date, end_date,
             if os.path.exists(path):
                 mass_backtesting.model_path = path
                 break
-        
-        # Check if we need to handle simulated data
-        if use_simulated_data:
-            # Create a temporary function to override download_stock_data
-            original_download = mass_backtesting.download_stock_data
-            
-            def simulated_download(ticker, start, end, **kwargs):
-                return generate_dummy_data(ticker, start, end)
-            
-            # Swap the functions
-            mass_backtesting.download_stock_data = simulated_download
+
         
         # Show progress updates
         progress_placeholder.text(f"Running backtest on {len(selected_tickers)} stocks...")
@@ -108,10 +98,6 @@ def run_backtest(initial_capital, selected_tickers, start_date, end_date,
             max_duration_days=max_duration_days,
             slippage_pct=slippage_pct
         )
-        
-        # Restore original download function if we overrode it
-        if use_simulated_data:
-            mass_backtesting.download_stock_data = original_download
         
         # Clean up progress indicator
         progress_placeholder.empty()
@@ -225,10 +211,6 @@ def main():
     slippage_pct = st.sidebar.number_input("Slippage Percentage", value=0.001, format="%.3f", 
                                          help="Slippage for trade execution")
     
-    # Data source option
-    use_simulated_data = st.sidebar.checkbox("Use simulated data (avoid API limits)", value=False)
-    use_only_simulated = st.sidebar.checkbox("Use only simulated data (avoid all API calls)", value=False)
-
     # Run backtest button
     if st.sidebar.button("Run Backtest"):
         if not selected_tickers:
@@ -253,7 +235,6 @@ def main():
             trailing_stop_pct=trailing_stop_pct,
             max_duration_days=max_duration_days,
             slippage_pct=slippage_pct,
-            use_simulated_data=use_only_simulated  # Pass the toggle value
         )
         progress_bar.progress(70)
         

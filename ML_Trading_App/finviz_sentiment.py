@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 import numpy as np
 
 # CSV file to store previously fetched sentiment scores
-CACHE_FILE = "sentiment_cache.csv"
+CACHE_FILE = "sentiment-csv/sentiment_cache.csv"
 
 # Initialize sentiment analyzer
 analyzer = SentimentIntensityAnalyzer()
