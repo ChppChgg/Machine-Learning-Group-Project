@@ -18,21 +18,6 @@ encoder = joblib.load(os.path.join(model_path, "label_encoder.pkl"))
 
 # Add this function at the top of your file, after imports
 def get_numbered_filepath(base_path, extension):
-    """
-    Generate a numbered filename to prevent overwriting existing files
-    
-    Parameters:
-    -----------
-    base_path : str
-        Base path without extension (e.g., "MarketTool/Combine-models/test-results/CSV/trade_history")
-    extension : str
-        File extension (e.g., "csv" or "png")
-        
-    Returns:
-    --------
-    str
-        Path with number appended (e.g., "MarketTool/Combine-models/test-results/CSV/trade_history_1.csv")
-    """
     # Ensure directories exist
     os.makedirs(os.path.dirname(base_path), exist_ok=True)
     
@@ -43,23 +28,8 @@ def get_numbered_filepath(base_path, extension):
     
     return f"{base_path}_{i}.{extension}"
 
-# Add this new function
+
 def balance_trading_signals(features, window=5):
-    """
-    Balance trading signals to avoid one-sided trading
-    
-    Parameters:
-    -----------
-    features : pandas.DataFrame
-        DataFrame with 'Model_Prediction' column
-    window : int
-        Rolling window for technical confirmation
-    
-    Returns:
-    --------
-    pandas.Series
-        Balanced trading signals
-    """
     df = features.copy()
     
     # Add simple technical indicators for confirmation
@@ -383,21 +353,21 @@ def visualize_enhanced_results(trade_manager, performance_metrics, ticker_perfor
     Visualize enhanced backtest results
     """
     # Create results folders if they don't exist
-    os.makedirs("MarketTool/Combine-models/test-results/CSV", exist_ok=True)
-    os.makedirs("MarketTool/Combine-models/test-results/PNG", exist_ok=True)
+    os.makedirs("test-results/CSV", exist_ok=True)
+    os.makedirs("test-results/PNG", exist_ok=True)
     
     # Save trade history to CSV with numbered filename
-    trade_history_path = get_numbered_filepath("MarketTool/Combine-models/test-results/CSV/trade_history", "csv")
+    trade_history_path = get_numbered_filepath("test-results/CSV/trade_history", "csv")
     trade_history_df = trade_manager.get_trade_history_df()
     trade_history_df.to_csv(trade_history_path, index=False)
     
     # Save closed trades to CSV with numbered filename
-    closed_trades_path = get_numbered_filepath("MarketTool/Combine-models/test-results/CSV/closed_trades", "csv")
+    closed_trades_path = get_numbered_filepath("test-results/CSV/closed_trades", "csv")
     closed_trades_df = trade_manager.get_closed_trades_df()
     closed_trades_df.to_csv(closed_trades_path, index=False)
     
     # Save portfolio value to CSV with numbered filename
-    portfolio_path = get_numbered_filepath("MarketTool/Combine-models/test-results/CSV/portfolio_value", "csv")
+    portfolio_path = get_numbered_filepath("test-results/CSV/portfolio_value", "csv")
     portfolio_df = trade_manager.get_portfolio_value_df()
     portfolio_df.to_csv(portfolio_path, index=True)
     
@@ -426,17 +396,17 @@ def visualize_enhanced_results(trade_manager, performance_metrics, ticker_perfor
     print(ticker_df)
     
     # Save stock performance to CSV with numbered filename
-    stock_perf_path = get_numbered_filepath("MarketTool/Combine-models/test-results/CSV/stock_performance", "csv")
+    stock_perf_path = get_numbered_filepath("test-results/CSV/stock_performance", "csv")
     ticker_df.to_csv(stock_perf_path)
     
     # --- Create visualizations with numbered filenames ---
     # 1. Portfolio Performance
-    portfolio_perf_path = get_numbered_filepath("MarketTool/Combine-models/test-results/PNG/portfolio_performance", "png")
+    portfolio_perf_path = get_numbered_filepath("test-results/PNG/portfolio_performance", "png")
     trade_manager.plot_portfolio_performance(save_path=portfolio_perf_path)
     
     # 2. Trade Analysis
     if trade_manager.closed_trades:
-        trade_analysis_path = get_numbered_filepath("MarketTool/Combine-models/test-results/PNG/trade_analysis", "png")
+        trade_analysis_path = get_numbered_filepath("test-results/PNG/trade_analysis", "png")
         trade_manager.plot_trade_analysis(save_path=trade_analysis_path)
     
         
@@ -546,11 +516,11 @@ def compare_strategy_to_benchmark(trade_manager, selected_tickers, start_date, e
     plt.tight_layout()
     
     # Save chart
-    comparison_path = get_numbered_filepath("MarketTool/Combine-models/test-results/PNG/strategy_vs_benchmark", "png")
+    comparison_path = get_numbered_filepath("test-results/PNG/strategy_vs_benchmark", "png")
     plt.savefig(comparison_path)
     
     # Save comparison data to CSV
-    comparison_data_path = get_numbered_filepath("MarketTool/Combine-models/test-results/CSV/strategy_vs_benchmark", "csv")
+    comparison_data_path = get_numbered_filepath("test-results/CSV/strategy_vs_benchmark", "csv")
     comparison_df = pd.DataFrame({
         'Date': benchmark_df.index,
         'Strategy_Value': benchmark_df['Strategy'],
@@ -561,7 +531,7 @@ def compare_strategy_to_benchmark(trade_manager, selected_tickers, start_date, e
     comparison_df.to_csv(comparison_data_path, index=False)
     
     # Save outperformance metrics
-    metrics_path = get_numbered_filepath("MarketTool/Combine-models/test-results/CSV/outperformance_metrics", "csv")
+    metrics_path = get_numbered_filepath("test-results/CSV/outperformance_metrics", "csv")
     metrics_df = pd.DataFrame({
         'Metric': ['Strategy_Return', 'Benchmark_Return', 'Outperformance'],
         'Value_Pct': [portfolio_return*100, benchmark_return*100, outperformance*100]

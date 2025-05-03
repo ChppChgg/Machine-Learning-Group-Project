@@ -146,41 +146,42 @@ def create_benchmark_comparison(trade_manager, selected_tickers, start_date, end
         if hasattr(mass_backtesting, 'compare_strategy_to_benchmark'):
             benchmark_data = mass_backtesting.compare_strategy_to_benchmark(
                 trade_manager=trade_manager,
-                tickers=selected_tickers,
+                selected_tickers=selected_tickers,
                 start_date=start_date,
                 end_date=end_date
             )
-            return benchmark_data
+            # Return a tuple that indicates this is dictionary data
+            return (benchmark_data, 'dict_result')
     except Exception as e:
         st.warning(f"Could not use built-in benchmark comparison: {str(e)}")
     
     # Fallback to our implementation if the above fails
-    try:
-        # Download SPY as benchmark
-        spy_data = download_stock_data('SPY', start=start_date, end=end_date)
-        if spy_data.empty:
-            spy_data = generate_dummy_data('SPY', start_date, end_date)
-        
-        spy_data = spy_data['Close'].to_frame().rename(columns={'Close': 'SPY'})
-        benchmark_df = spy_data
-        
-        # Add individual ticker performance
-        for ticker in selected_tickers:
-            try:
-                ticker_data = download_stock_data(ticker, start=start_date, end=end_date)
-                if ticker_data.empty:
-                    ticker_data = generate_dummy_data(ticker, start_date, end_date)
-                
-                if 'Close' in ticker_data.columns:
-                    benchmark_df[ticker] = ticker_data['Close']
-                    time.sleep(0.5)  # Small delay to avoid API limits
-            except Exception as e:
-                st.warning(f"Couldn't add {ticker} to benchmark: {str(e)}")
-                
-        return benchmark_df
-    except Exception as e:
-        st.warning(f"Couldn't create benchmark comparison: {str(e)}")
-        return None
+        try:
+            # Download SPY as benchmark
+            spy_data = download_stock_data('SPY', start=start_date, end=end_date)
+            if spy_data.empty:
+                spy_data = generate_dummy_data('SPY', start_date, end_date)
+            
+            spy_data = spy_data['Close'].to_frame().rename(columns={'Close': 'SPY'})
+            benchmark_df = spy_data
+            
+            # Add individual ticker performance
+            for ticker in selected_tickers:
+                try:
+                    ticker_data = download_stock_data(ticker, start=start_date, end=end_date)
+                    if ticker_data.empty:
+                        ticker_data = generate_dummy_data(ticker, start_date, end_date)
+                    
+                    if 'Close' in ticker_data.columns:
+                        benchmark_df[ticker] = ticker_data['Close']
+                        time.sleep(0.5)  # Small delay to avoid API limits
+                except Exception as e:
+                    st.warning(f"Couldn't add {ticker} to benchmark: {str(e)}")
+                    
+            return benchmark_df
+        except Exception as e:
+            st.warning(f"Couldn't create benchmark comparison: {str(e)}")
+            return None
 
 # Main app
 def main():
@@ -317,12 +318,36 @@ def main():
             else:
                 st.warning("No portfolio data available")
         
+        # Call the benchmark function
+        benchmark_result = create_benchmark_comparison(
+            trade_manager=trade_manager, 
+            selected_tickers=selected_tickers,
+            start_date=start_date.strftime('%Y-%m-%d'),
+            end_date=end_date.strftime('%Y-%m-%d')
+        )
+
         # Benchmark comparison
         with col2:
             st.subheader("Benchmark Comparison")
-            if benchmark_df is not None and not benchmark_df.empty and value_col:
-                # Normalize benchmark data
-                normalized_benchmark = benchmark_df.div(benchmark_df.iloc[0]).mul(initial_capital)
+            
+            # Check if we got a tuple (dict result) or a DataFrame
+            if isinstance(benchmark_result, tuple) and benchmark_result[1] == 'dict_result':
+                # We have dictionary data from compare_strategy_to_benchmark
+                benchmark_dict = benchmark_result[0]
+                st.metric("Strategy Return", f"{benchmark_dict['strategy_return']*100:.2f}%")
+                st.metric("Benchmark Return", f"{benchmark_dict['benchmark_return']*100:.2f}%")
+                st.metric("Outperformance", f"{benchmark_dict['outperformance']*100:.2f}%")
+                
+                # Display the saved comparison chart if available
+                if 'comparison_path' in benchmark_dict and os.path.exists(benchmark_dict['comparison_path']):
+                    st.image(benchmark_dict['comparison_path'])
+                else:
+                    st.warning("Comparison chart not available")
+                    
+            elif benchmark_result is not None and hasattr(benchmark_result, 'empty') and not benchmark_result.empty and value_col:
+                # We have DataFrame data from the fallback implementation
+                # Original DataFrame handling code
+                normalized_benchmark = benchmark_result.div(benchmark_result.iloc[0]).mul(initial_capital)
                 
                 # Add strategy performance
                 if portfolio_value_df is not None and not portfolio_value_df.empty:
@@ -412,7 +437,7 @@ def main():
         with col2:
             if portfolio_value_df is not None and not portfolio_value_df.empty and value_col:
                 try:
-                    monthly_returns = portfolio_value_df[value_col].resample('M').last().pct_change().dropna()
+                    monthly_returns = portfolio_value_df[value_col].resample('ME').last().pct_change().dropna()
                     if not monthly_returns.empty:
                         fig, ax = plt.subplots(figsize=(10, 5))
                         monthly_returns.plot(kind='bar', ax=ax)

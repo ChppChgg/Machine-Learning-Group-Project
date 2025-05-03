@@ -14,7 +14,7 @@ os.makedirs(CACHE_DIR, exist_ok=True)
 yf_lock = threading.Lock()
 # Track last request time for rate limiting
 last_request_time = datetime.now()
-MIN_REQUEST_INTERVAL = 5.0  # Minimum seconds between requests
+MIN_REQUEST_INTERVAL = 10.0  # Minimum seconds between requests
 
 def download_stock_data(ticker: str, start: str, end: str, retries=5, use_cache=True) -> pd.DataFrame:
     """
@@ -41,14 +41,14 @@ def download_stock_data(ticker: str, start: str, end: str, retries=5, use_cache=
         now = datetime.now()
         elapsed = (now - last_request_time).total_seconds()
         if elapsed < MIN_REQUEST_INTERVAL:
-            # Much longer delay between requests - up to 10 seconds
-            sleep_time = MIN_REQUEST_INTERVAL - elapsed + random.uniform(2.0, 10.0)
+            # Much longer delay between requests - up to 15 seconds with jitter
+            sleep_time = MIN_REQUEST_INTERVAL - elapsed + random.uniform(5.0, 15.0)
             print(f"Rate limiting: waiting {sleep_time:.2f}s before fetching {ticker}")
             time.sleep(sleep_time)
         
         # Download with robust retry logic
         attempt = 0
-        max_wait = 10  # Start with 10 seconds
+        max_wait = 20  # Start with longer initial wait - 20 seconds
         while attempt < retries:
             try:
                 # Update last request time
@@ -75,17 +75,18 @@ def download_stock_data(ticker: str, start: str, end: str, retries=5, use_cache=
             
             except Exception as e:
                 attempt += 1
-                if "Rate limit" in str(e):
-                    # Much longer wait on rate limits - 20-60 seconds
-                    max_wait = 20 + attempt * 10
-                    print(f"Rate limit hit for {ticker}, waiting {max_wait}s (attempt {attempt}/{retries})")
+                if "Rate limit" in str(e) or "Too Many Requests" in str(e):
+                    # Much longer wait on rate limits - 30-120 seconds with jitter
+                    max_wait = 30 + attempt * 20 + random.uniform(0, 10)
+                    print(f"Rate limit hit for {ticker}, waiting {max_wait:.1f}s (attempt {attempt}/{retries})")
                 else:
-                    max_wait = 5 + attempt * 5
-                    print(f"Error downloading {ticker}: {e} - waiting {max_wait}s")
+                    max_wait = 10 + attempt * 10 + random.uniform(0, 5)
+                    print(f"Error downloading {ticker}: {e} - waiting {max_wait:.1f}s")
                 
                 time.sleep(max_wait)
     
     print(f"Failed to download {ticker} after {retries} attempts")
+    # Return empty DataFrame
     return pd.DataFrame()
 
 def create_labels(df: pd.DataFrame, threshold=0.03, lookback=5):
