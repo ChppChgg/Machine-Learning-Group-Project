@@ -2,6 +2,7 @@ import yfinance as yf
 import pandas as pd
 
 from indicators import add_technical_indicators
+from sentiment_score import get_cached_sentiment
 
 # Downloads historical stock data for a given ticker
 def download_stock_data(ticker, start="2020-01-01", end=None):
@@ -52,33 +53,57 @@ def label_data(df, threshold=0.01):
 
 
 if __name__ == "__main__":
-    tickers = ["MSFT", "AAPL", "GOOGL", "AMZN", "NVDA", "PLTR", "TSLA", "META"]
+    # List of tickers to process (expand as needed)
+    tickers = [
+        "AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "META", "NFLX", "INTC", "AMD",
+        "ADBE", "CRM", "ORCL", "CSCO", "QCOM", "AVGO", "TXN", "IBM", "SHOP", "SQ",
+        "PYPL", "PLTR", "UBER", "LYFT", "TWLO", "ROKU", "SPOT", "BA", "DIS", "NKE",
+        "WMT", "TGT", "COST", "MCD", "KO", "PEP", "JNJ", "PFE", "MRK", "CVX",
+        "XOM", "BP", "V", "MA", "AXP", "GS", "JPM", "BAC", "WFC", "BLK"
+    ]
+
     all_data = []
 
     for ticker in tickers:
-        df = download_stock_data(ticker)
-        merged = merge_with_sentiment(df)
-        with_indicators = add_technical_indicators(merged)
-        labelled = label_data(with_indicators)
-        cleaned = labelled.dropna()
+        print(f"\nProcessing {ticker}...")
 
-        if not cleaned.empty:
-            all_data.append(cleaned)
+        # Update sentiment cache for this ticker (ensures sentiment_7d_avg exists)
+        try:
+            get_cached_sentiment(ticker)
+        except Exception as e:
+            print(f"Skipping sentiment for {ticker} due to error: {e}")
+            continue
 
-    # Combine all tickers into one DataFrame
+        # Download price data and process it
+        try:
+            df = download_stock_data(ticker)
+            merged = merge_with_sentiment(df)
+            with_indicators = add_technical_indicators(merged)
+            labelled = label_data(with_indicators)
+            labelled["sentiment_7d_avg"] = labelled["sentiment_7d_avg"].fillna(0.0)
+            required_cols = ["RSI", "MACD", "MACD_Signal", "SMA", "EMA"]
+            cleaned = labelled.dropna(subset=required_cols)
+            print(f"  {ticker} rows before drop: {len(labelled)} | after drop: {len(cleaned)}")
+
+            if not cleaned.empty:
+                all_data.append(cleaned)
+        except Exception as e:
+            print(f"Skipping {ticker} due to data error: {e}")
+            continue
+
+    # Combine and save final training dataset
     if all_data:
         final_df = pd.concat(all_data, ignore_index=True)
 
-        # Feature selection
         feature_cols = [
             "Open", "High", "Low", "Close", "Volume",
             "sentiment_7d_avg", "RSI", "MACD", "MACD_Signal", "SMA", "EMA"
         ]
         target_col = "Label"
-        output_df = final_df[["Date", "Ticker"] + feature_cols + [target_col]]
 
-        # Save combined training data
+        output_df = final_df[["Date", "Ticker"] + feature_cols + [target_col]]
         output_df.to_csv("new/csv_files/training_data.csv", index=False)
-        print("Saved training_data.csv with shape:", output_df.shape)
+
+        print("\nSaved training_data.csv with shape:", output_df.shape)
     else:
-        print("No usable data generated.")
+        print("No usable data was generated.")
