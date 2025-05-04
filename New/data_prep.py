@@ -4,6 +4,14 @@ import pandas as pd
 from indicators import add_technical_indicators
 from sentiment_score import get_cached_sentiment
 
+def get_sp500_tickers(limit=200):
+    url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
+    table = pd.read_html(url)
+    df = table[0]
+    tickers = df["Symbol"].dropna().unique().tolist()
+    return tickers[:limit]
+
+
 # Downloads historical stock data for a given ticker
 def download_stock_data(ticker, start="2020-01-01", end=None):
     df = yf.download(ticker, start=start, end=end)
@@ -33,36 +41,36 @@ def merge_with_sentiment(price_df, sentiment_path="new/csv_files/sentiment_cache
     return merged
 
 # Generates BUY, SELL, or HOLD labels based on next-day returns
-def label_data(df, threshold=0.0075):
+def label_data(df, lookahead=3):
     df = df.copy()
-    df["Future_Close"] = df["Close"].shift(-1)
+    df = df.sort_values("Date").reset_index(drop=True)
+    df["Future_Close"] = df["Close"].shift(-lookahead)
     df["Return"] = (df["Future_Close"] / df["Close"]) - 1
 
-    def label(row):
-        if row["Return"] > threshold:
+    valid_returns = df["Return"].dropna()
+    upper = valid_returns.quantile(0.65)
+    lower = valid_returns.quantile(0.35)
+
+    def label_row(ret):
+        if pd.isna(ret):
+            return None
+        elif ret > upper:
             return "BUY"
-        elif row["Return"] < -threshold:
+        elif ret < lower:
             return "SELL"
         else:
             return "HOLD"
 
-    df["Label"] = df.apply(label, axis=1)
+    df["Label"] = df["Return"].apply(label_row)
     df.drop(columns=["Future_Close", "Return"], inplace=True)
     return df
 
 
 
 if __name__ == "__main__":
-    # List of tickers to process (expand as needed)
-    tickers = [
-        "AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "META", "NFLX", "INTC", "AMD",
-        "ADBE", "CRM", "ORCL", "CSCO", "QCOM", "AVGO", "TXN", "IBM", "SHOP", "SQ",
-        "PYPL", "PLTR", "UBER", "LYFT", "TWLO", "ROKU", "SPOT", "BA", "DIS", "NKE",
-        "WMT", "TGT", "COST", "MCD", "KO", "PEP", "JNJ", "PFE", "MRK", "CVX",
-        "XOM", "BP", "V", "MA", "AXP", "GS", "JPM", "BAC", "WFC", "BLK"
-    ]
-
     all_data = []
+
+    tickers = get_sp500_tickers()
 
     for ticker in tickers:
         print(f"\nProcessing {ticker}...")
@@ -80,6 +88,7 @@ if __name__ == "__main__":
             merged = merge_with_sentiment(df)
             with_indicators = add_technical_indicators(merged)
             labelled = label_data(with_indicators)
+            labelled.dropna(subset=["Label"], inplace=True)
             labelled["sentiment_7d_avg"] = labelled["sentiment_7d_avg"].fillna(0.0)
             required_cols = ["RSI", "MACD", "MACD_Signal", "SMA", "EMA"]
             cleaned = labelled.dropna(subset=required_cols)
@@ -96,8 +105,10 @@ if __name__ == "__main__":
         final_df = pd.concat(all_data, ignore_index=True)
 
         feature_cols = [
-            "Open", "High", "Low", "Close", "Volume",
-            "sentiment_7d_avg", "RSI", "MACD", "MACD_Signal", "SMA", "EMA"
+        "Open", "High", "Low", "Close", "Volume",
+        "sentiment_7d_avg",
+        "RSI", "MACD", "MACD_Signal", "SMA", "EMA",
+        "BB_High", "BB_Low", "OBV", "Momentum", "WilliamsR"
         ]
         target_col = "Label"
 
