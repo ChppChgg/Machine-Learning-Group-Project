@@ -33,7 +33,7 @@ def merge_with_sentiment(price_df, sentiment_path="new/csv_files/sentiment_cache
     return merged
 
 # Generates BUY, SELL, or HOLD labels based on next-day returns
-def label_data(df, threshold=0.01):
+def label_data(df, threshold=0.0075):
     df = df.copy()
     df["Future_Close"] = df["Close"].shift(-1)
     df["Return"] = (df["Future_Close"] / df["Close"]) - 1
