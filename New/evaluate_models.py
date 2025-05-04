@@ -12,6 +12,9 @@ y = df["Label"]
 scaler = joblib.load("new/models/scaler.pkl")
 label_encoder = joblib.load("new/models/label_encoder.pkl")
 
+target_names = list(label_encoder.classes_)
+target_names = [str(name) for name in target_names]
+
 # Encode labels and scale features
 y_encoded = label_encoder.transform(y)
 X_scaled = scaler.transform(X)
@@ -37,7 +40,7 @@ def evaluate_model(model, name):
     print("F1 Score :", f1_score(y_test, y_pred, average="weighted"))
     print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
     print("Classification Report:\n", classification_report(
-        y_test, y_pred, target_names=label_encoder.classes_))
+        y_test, y_pred, target_names=target_names))
 
 # Run evaluations
 evaluate_model(rf, "Random Forest")
