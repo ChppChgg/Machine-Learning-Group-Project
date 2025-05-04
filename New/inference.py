@@ -1,5 +1,6 @@
 import pandas as pd
 import joblib
+import sys
 from sentiment_score import get_cached_sentiment
 from indicators import add_technical_indicators
 from data_prep import download_stock_data
@@ -78,5 +79,16 @@ def predict_for_ticker(ticker):
 
 if __name__ == "__main__":
     # Example usage
-    ticker_input = input("Enter a stock ticker (e.g., AAPL): ").strip().upper()
-    predict_for_ticker(ticker_input)
+    #ticker_input = input("Enter a stock ticker (e.g., AAPL): ").strip().upper()
+    #predict_for_ticker(ticker_input)
+    sys.stdout = open("new/prediction_output.txt", "w")
+    tickers = [
+        "AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "META", "NFLX", "INTC", "AMD",
+        "ADBE", "CRM", "ORCL", "CSCO", "QCOM", "AVGO", "TXN", "IBM", "SHOP", "SQ",
+        "PYPL", "PLTR", "UBER", "LYFT", "TWLO", "ROKU", "SPOT", "BA", "DIS", "NKE",
+        "WMT", "TGT", "COST", "MCD", "KO", "PEP", "JNJ", "PFE", "MRK", "CVX",
+        "XOM", "BP", "V", "MA", "AXP", "GS", "JPM", "BAC", "WFC", "BLK"
+    ]
+    for ticker in tickers:
+        print("\n" + "=" * 40)
+        predict_for_ticker(ticker)
