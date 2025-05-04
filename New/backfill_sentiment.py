@@ -1,12 +1,13 @@
 from sentiment_score import get_cached_sentiment
+from data_prep import get_sp500_tickers
 from datetime import datetime, timedelta
 
 # Tickers to backfill
-tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
+tickers = get_sp500_tickers()
 
 # Set date range
 end_date = datetime.today().date()
-start_date = end_date - timedelta(days=14) 
+start_date = end_date - timedelta(days=7) 
 
 # Backfill sentiment day by day
 for ticker in tickers:
