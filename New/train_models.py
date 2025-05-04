@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.utils.class_weight import compute_sample_weight
 from xgboost import XGBClassifier
 import joblib
 import os
@@ -24,9 +25,10 @@ X_scaled = scaler.fit_transform(X)
 
 # Split data (even if small, needed for structure)
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_encoded, test_size=0.2, random_state=42)
+sample_weights = compute_sample_weight(class_weight="balanced", y=y_train)
 
 # Train Random Forest
-rf = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
+rf = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42, class_weight='balanced')
 rf.fit(X_train, y_train)
 
 # Train XGBoost
@@ -36,10 +38,10 @@ xgb = XGBClassifier(
     eval_metric="mlogloss",
     random_state=42
 )
-xgb.fit(X_train, y_train)
+xgb.fit(X_train, y_train, sample_weight=sample_weights)
 
 # Train Logistic Regression
-lr = LogisticRegression(max_iter=1000)
+lr = LogisticRegression(max_iter=1000, class_weight='balanced')
 lr.fit(X_train, y_train)
 
 # Create model directory if needed
