@@ -1,0 +1,1987 @@
+
+========================================
+YF.download() has changed argument auto_adjust default to True
+
+Predictions for MMM on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.650
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AOS on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.443
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for ABT on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.594
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for ABBV on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.524
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for ACN on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.751
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for ADBE on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.953
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AMD on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.747
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AES on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AFL on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.894
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for A on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for APD on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.938
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for ABNB on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.415
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for AKAM on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.676
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for ALB on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.484
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for ARE on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.713
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for ALGN on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.811
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for ALLE on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.882
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for LNT on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.891
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for ALL on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.433
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for GOOGL on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.606
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for GOOG on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.550
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for MO on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.826
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AMZN on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : BUY
+  Logistic Regression : BUY
+  Sentiment Score     : 0.532
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AMCR on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AEE on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.820
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AEP on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AXP on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.675
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AIG on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.540
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for AMT on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.828
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AWK on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.906
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AMP on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.934
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AME on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.706
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AMGN on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : HOLD
+  Logistic Regression : BUY
+  Sentiment Score     : 0.549
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for APH on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.750
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for ADI on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for ANSS on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.793
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AON on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.672
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for APA on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.657
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for APO on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.539
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for AAPL on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : HOLD
+  Logistic Regression : BUY
+  Sentiment Score     : 0.399
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for AMAT on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.792
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for APTV on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.923
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for ACGL on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.584
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for ADM on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.365
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for ANET on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.976
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AJG on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.744
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AIZ on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for T on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.506
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for ATO on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for ADSK on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.728
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for ADP on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.901
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AZO on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.749
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AVB on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AVY on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.817
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AXON on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.974
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for BKR on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.538
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for BALL on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.287
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for BAC on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.464
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for BAX on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.739
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for BDX on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : BUY
+  Sentiment Score     : 0.978
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+No sufficient data for BRK.B
+
+========================================
+
+Predictions for BBY on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for TECH on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.824
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for BIIB on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.379
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for BLK on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.247
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for BX on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.341
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for BK on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for BA on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.184
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for BKNG on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.522
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for BSX on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.912
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for BMY on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.658
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for AVGO on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.848
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for BR on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.907
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for BRO on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+No sufficient data for BF.B
+
+========================================
+
+Predictions for BLDR on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.656
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for BG on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.505
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for BXP on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.389
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for CHRW on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.947
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for CDNS on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.545
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for CZR on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CPT on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CPB on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.753
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for COF on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.790
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CAH on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.940
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for KMX on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.390
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for CCL on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.842
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for CARR on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.987
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CAT on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.206
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for CBOE on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : BUY
+  Sentiment Score     : 0.633
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CBRE on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.792
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CDW on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.777
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for COR on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CNC on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.961
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CNP on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.967
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CF on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.753
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CRL on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.689
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for SCHW on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.480
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for CHTR on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.993
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CVX on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.373
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CMG on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.133
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for CB on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.175
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for CHD on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.860
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CI on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : BUY
+  Sentiment Score     : 0.780
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CINF on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.488
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for CTAS on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.933
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CSCO on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.689
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for C on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.405
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for CFG on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.651
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CLX on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.751
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CME on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.858
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CMS on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for KO on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.713
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CTSH on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CL on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CMCSA on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.776
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CAG on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.650
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for COP on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.843
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for ED on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.933
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for STZ on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.126
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for CEG on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for COO on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.982
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CPRT on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.709
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for GLW on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CPAY on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 1.000
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CTVA on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.553
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for CSGP on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for COST on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.911
+  Model Vote Result   : HOLD
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CTRA on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : SELL
+  Sentiment Score     : 0.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CRWD on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for CCI on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for CSX on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for CMI on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for CVS on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : BUY
+  Logistic Regression : BUY
+  Sentiment Score     : 0.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for DHR on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for DRI on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for DVA on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : BUY
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for DAY on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for DECK on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for DE on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for DELL on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for DAL on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for DVN on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for DXCM on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : SELL
+  Sentiment Score     : 0.000
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for FANG on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for DLR on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for DFS on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for DG on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for DLTR on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for D on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for DPZ on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : BUY
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for DASH on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for DOV on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for DOW on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for DHI on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for DTE on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for DUK on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for DD on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for EMN on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : SELL
+  Logistic Regression : BUY
+  Sentiment Score     : 0.000
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for ETN on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : SELL
+  Logistic Regression : SELL
+  Sentiment Score     : 0.000
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for EBAY on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for ECL on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for EIX on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : BUY
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for EW on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for EA on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : SELL
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for ELV on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : SELL
+  Logistic Regression : BUY
+  Sentiment Score     : 0.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for EMR on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for ENPH on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : BUY
+  Sentiment Score     : 0.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for ETR on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for EOG on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : SELL
+  Logistic Regression : SELL
+  Sentiment Score     : 0.000
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for EPAM on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for EQT on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for EFX on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for EQIX on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for EQR on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for ERIE on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : SELL
+  Sentiment Score     : 0.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for ESS on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for EL on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : SELL
+  Logistic Regression : SELL
+  Sentiment Score     : 0.000
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for EG on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : SELL
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for EVRG on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for ES on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for EXC on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for EXE on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for EXPE on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for EXPD on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : SELL
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for EXR on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for XOM on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.448
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for FFIV on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for FDS on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for FICO on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for FAST on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for FRT on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for FDX on 2025-05-02T00:00:00.000000000
+  Random Forest       : SELL
+  XGBoost             : SELL
+  Logistic Regression : SELL
+  Sentiment Score     : 0.000
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for FIS on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for FITB on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for FSLR on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : SELL
+  Logistic Regression : SELL
+  Sentiment Score     : 0.000
+  Model Vote Result   : SELL
+  Final Recommendation: SELL
+
+========================================
+
+Predictions for FE on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : HOLD
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
+
+========================================
+
+Predictions for FI on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : BUY
+  Sentiment Score     : 0.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for F on 2025-05-02T00:00:00.000000000
+  Random Forest       : BUY
+  XGBoost             : BUY
+  Logistic Regression : SELL
+  Sentiment Score     : 0.000
+  Model Vote Result   : BUY
+  Final Recommendation: BUY
+
+========================================
+
+Predictions for FTNT on 2025-05-02T00:00:00.000000000
+  Random Forest       : HOLD
+  XGBoost             : BUY
+  Logistic Regression : HOLD
+  Sentiment Score     : 0.000
+  Model Vote Result   : HOLD
+  Final Recommendation: HOLD
