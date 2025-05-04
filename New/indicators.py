@@ -1,4 +1,5 @@
 import pandas as pd
+import ta
 
 # Relative Strength Index (RSI)
 def compute_rsi(df, window=14):
@@ -28,10 +29,40 @@ def compute_ema(df, span=20):
     df['EMA'] = df['Close'].ewm(span=span, adjust=False).mean()
     return df
 
+# Bollinger bands
+def compute_bollinger_bands(df, window=20):
+    bb = ta.volatility.BollingerBands(close=df["Close"], window=window, window_dev=2)
+    df["BB_High"] = bb.bollinger_hband()
+    df["BB_Low"] = bb.bollinger_lband()
+    return df
+
+# On Balance Volume
+def compute_obv(df):
+    obv = ta.volume.OnBalanceVolumeIndicator(close=df["Close"], volume=df["Volume"])
+    df["OBV"] = obv.on_balance_volume()
+    return df
+
+# Momentum
+def compute_momentum(df, window=10):
+    mom = ta.momentum.ROCIndicator(close=df["Close"], window=window)
+    df["Momentum"] = mom.roc()
+    return df
+
+# Williams % ratio
+def compute_williams_r(df):
+    will = ta.momentum.WilliamsRIndicator(high=df["High"], low=df["Low"], close=df["Close"])
+    df["WilliamsR"] = will.williams_r()
+    return df
+
+
 # Apply all technical indicators
 def add_technical_indicators(df):
     df = compute_rsi(df)
     df = compute_macd(df)
     df = compute_sma(df)
     df = compute_ema(df)
+    df = compute_bollinger_bands(df)
+    df = compute_obv(df)
+    df = compute_momentum(df)
+    df = compute_williams_r(df)
     return df
