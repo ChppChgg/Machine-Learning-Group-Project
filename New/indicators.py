@@ -29,13 +29,6 @@ def compute_ema(df, span=20):
     df['EMA'] = df['Close'].ewm(span=span, adjust=False).mean()
     return df
 
-# Bollinger bands
-def compute_bollinger_bands(df, window=20):
-    bb = ta.volatility.BollingerBands(close=df["Close"], window=window, window_dev=2)
-    df["BB_High"] = bb.bollinger_hband()
-    df["BB_Low"] = bb.bollinger_lband()
-    return df
-
 # On Balance Volume
 def compute_obv(df):
     obv = ta.volume.OnBalanceVolumeIndicator(close=df["Close"], volume=df["Volume"])
@@ -61,7 +54,6 @@ def add_technical_indicators(df):
     df = compute_macd(df)
     df = compute_sma(df)
     df = compute_ema(df)
-    df = compute_bollinger_bands(df)
     df = compute_obv(df)
     df = compute_momentum(df)
     df = compute_williams_r(df)
