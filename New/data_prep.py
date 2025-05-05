@@ -105,10 +105,9 @@ if __name__ == "__main__":
         final_df = pd.concat(all_data, ignore_index=True)
 
         feature_cols = [
-        "Open", "High", "Low", "Close", "Volume",
-        "sentiment_7d_avg",
-        "RSI", "MACD", "MACD_Signal", "SMA", "EMA",
-        "BB_High", "BB_Low", "OBV", "Momentum", "WilliamsR"
+            "Open", "High", "Low", "Close", "Volume", "sentiment_7d_avg",
+            "RSI", "MACD", "MACD_Signal", "SMA", "EMA",
+            "OBV", "Momentum", "WilliamsR"
         ]
         target_col = "Label"
 
