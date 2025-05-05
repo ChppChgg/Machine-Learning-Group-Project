@@ -36,6 +36,7 @@ xgb = XGBClassifier(
     objective="multi:softprob",
     num_class=3,
     eval_metric="mlogloss",
+    max_depth=10,
     random_state=42
 )
 xgb.fit(X_train, y_train, sample_weight=sample_weights)
